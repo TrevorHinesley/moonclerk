@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-By default, Moonclerk will look for `ENV["MOONCLERK_API_KEY"]`, but you can set it manually in an initializer (e.g. `config/initializers/moonclerk.rb`) if you'd like:
+By default, Moonclerk will look for your API key at `ENV["MOONCLERK_API_KEY"]`, but you can set it manually in an initializer (e.g. `config/initializers/moonclerk.rb`) if you'd like:
 
 ```ruby
  Moonclerk.api_key = "<API-KEY>"
@@ -29,8 +29,6 @@ By default, Moonclerk will look for `ENV["MOONCLERK_API_KEY"]`, but you can set 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
