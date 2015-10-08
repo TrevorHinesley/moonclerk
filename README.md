@@ -31,19 +31,70 @@ By default, Moonclerk will look for your API key at `ENV["MOONCLERK_API_KEY"]`, 
 To retrieve a customer:
 
 ```ruby
-Moonclerk::Customer.find(id) # #find is also aliased as #retrieve
+Moonclerk::Customer.find(id) # or Moonclerk::Customer.retrieve(id)
 ```
 
 To list customers:
 
 ```ruby
-Moonclerk::Customer.list # #list is also aliased as #all
+Moonclerk::Customer.list # or Moonclerk::Customer.all
+
+# Options include count and offset
+# NOTE: Count defaults to 10, and offset to 0
 ```
 
 To filter customers:
 
 ```ruby
-Moonclerk::Customer.where(status: "active") # #list is also aliased as #all
+Moonclerk::Customer.where(status: "active")
+
+# Options include form_id, checkout_from, checkout_to, next_payment_from, next_payment_to, status, count, offset
+# NOTE: Any parameter ending in _from or _to is expected to be a Date, Time or DateTime
+# NOTE: Count defaults to 10, and offset to 0
+```
+
+### Forms
+
+To retrieve a form:
+
+```ruby
+Moonclerk::Form.find(id) # or Moonclerk::Form.retrieve(id)
+```
+
+To list forms:
+
+```ruby
+Moonclerk::Form.list # or Moonclerk::Form.all
+
+# Options include count and offset
+# NOTE: Count defaults to 10, and offset to 0
+```
+
+### Payments
+
+To retrieve a payment:
+
+```ruby
+Moonclerk::Payment.find(id) # or Moonclerk::Payment.retrieve(id)
+```
+
+To list payments:
+
+```ruby
+Moonclerk::Payment.list # or Moonclerk::Payment.all
+
+# Options include count and offset
+# NOTE: Count defaults to 10, and offset to 0
+```
+
+To filter payments:
+
+```ruby
+Moonclerk::Payment.where(status: "active")
+
+# Options include form_id, customer_id, date_from, date_to, status, count, offset
+# NOTE: Any parameter ending in _from or _to is expected to be a Date, Time or DateTime
+# NOTE: Count defaults to 10, and offset to 0
 ```
 
 ## Development
