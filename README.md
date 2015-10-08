@@ -26,12 +26,20 @@ By default, Moonclerk will look for your API key at `ENV["MOONCLERK_API_KEY"]`, 
  Moonclerk.api_key = "<API-KEY>"
 ```
 
-### Customers
+### All
+
+All objects have `find` and `list`, and some have `where` which allows filtering on certain attributes. For any `list` or `where` call, `next_page` and `previous_page` can be used to traverse the results returned from the API:
+
+```ruby
+Moonclerk.list.next_page
+```
+
+### Customers (known as "Plans" in the MoonClerk UI)
 
 To retrieve a customer:
 
 ```ruby
-Moonclerk::Customer.find(id) # or Moonclerk::Customer.retrieve(id)
+Moonclerk::Customer.retrieve(id) # or Moonclerk::Customer.find(id)
 ```
 
 To list customers:
@@ -40,7 +48,7 @@ To list customers:
 Moonclerk::Customer.list # or Moonclerk::Customer.all
 
 # Options include count and offset
-# NOTE: Count defaults to 10, and offset to 0
+# NOTE: Count defaults to 10 (max is 100), and offset defaults to 0
 ```
 
 To filter customers:
@@ -50,7 +58,7 @@ Moonclerk::Customer.where(status: "active")
 
 # Options include form_id, checkout_from, checkout_to, next_payment_from, next_payment_to, status, count, offset
 # NOTE: Any parameter ending in _from or _to is expected to be a Date, Time or DateTime
-# NOTE: Count defaults to 10, and offset to 0
+# NOTE: Count defaults to 10 (max is 100), and offset defaults to 0
 ```
 
 ### Forms
@@ -58,7 +66,7 @@ Moonclerk::Customer.where(status: "active")
 To retrieve a form:
 
 ```ruby
-Moonclerk::Form.find(id) # or Moonclerk::Form.retrieve(id)
+Moonclerk::Form.retrieve(id) # or Moonclerk::Form.find(id)
 ```
 
 To list forms:
@@ -67,7 +75,7 @@ To list forms:
 Moonclerk::Form.list # or Moonclerk::Form.all
 
 # Options include count and offset
-# NOTE: Count defaults to 10, and offset to 0
+# NOTE: Count defaults to 10 (max is 100), and offset defaults to 0
 ```
 
 ### Payments
@@ -75,7 +83,7 @@ Moonclerk::Form.list # or Moonclerk::Form.all
 To retrieve a payment:
 
 ```ruby
-Moonclerk::Payment.find(id) # or Moonclerk::Payment.retrieve(id)
+Moonclerk::Payment.retrieve(id) # or Moonclerk::Payment.find(id)
 ```
 
 To list payments:
@@ -84,7 +92,7 @@ To list payments:
 Moonclerk::Payment.list # or Moonclerk::Payment.all
 
 # Options include count and offset
-# NOTE: Count defaults to 10, and offset to 0
+# NOTE: Count defaults to 10 (max is 100), and offset defaults to 0
 ```
 
 To filter payments:
@@ -94,7 +102,7 @@ Moonclerk::Payment.where(status: "active")
 
 # Options include form_id, customer_id, date_from, date_to, status, count, offset
 # NOTE: Any parameter ending in _from or _to is expected to be a Date, Time or DateTime
-# NOTE: Count defaults to 10, and offset to 0
+# NOTE: Count defaults to 10 (max is 100), and offset defaults to 0
 ```
 
 ## Development
