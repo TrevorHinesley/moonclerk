@@ -26,6 +26,26 @@ By default, Moonclerk will look for your API key at `ENV["MOONCLERK_API_KEY"]`, 
  Moonclerk.api_key = "<API-KEY>"
 ```
 
+### Customers
+
+To retrieve a customer:
+
+```ruby
+Moonclerk::Customer.find(id) # #find is also aliased as #retrieve
+```
+
+To list customers:
+
+```ruby
+Moonclerk::Customer.list # #list is also aliased as #all
+```
+
+To filter customers:
+
+```ruby
+Moonclerk::Customer.where(status: "active") # #list is also aliased as #all
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
