@@ -30,7 +30,7 @@ module Moonclerk
     end
 
     def self.retrieve(id)
-      instance = self.new(id)
+      instance = self.new(id.to_s)
       instance.refresh
       instance
     end

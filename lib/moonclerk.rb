@@ -59,7 +59,7 @@ module Moonclerk
 
   def self.headers
     {
-      "Authorization" => "Token token=#{api_key || ENV['MOONCLERK_API_KEY']}",
+      "Authorization" => "Token token=#{api_key}",
       "Accept" => "application/vnd.moonclerk+json;version=#{API_VERSION}"
     }
   end

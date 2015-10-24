@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-By default, Moonclerk will look for your API key at `ENV["MOONCLERK_API_KEY"]`, but you can set it manually in an initializer (e.g. `config/initializers/moonclerk.rb`) if you'd like:
+Set your API key in an initializer (e.g. `config/initializers/moonclerk.rb`):
 
 ```ruby
  Moonclerk.api_key = "<API-KEY>"
