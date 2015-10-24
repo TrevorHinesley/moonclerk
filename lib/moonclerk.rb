@@ -105,6 +105,6 @@ module Moonclerk
   end
 
   def self.api_error(error, response, error_obj)
-    APIError.new(error[:message], response.code, response.body, error_obj, response.headers)
+    APIError.new(error[:message], response.status, response.body, error_obj, response.headers)
   end
 end
