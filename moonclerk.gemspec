@@ -9,14 +9,14 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Trevor Hinesley"]
   spec.email         = ["trevor@trevorhinesley.com"]
 
-  spec.summary       = %q{TODO: Gem to wrap MoonClerk.com read-only REST API}
-  spec.description   = %q{TODO: Gem to wrap MoonClerk.com read-only REST API}
+  spec.summary       = %q{Gem to wrap MoonClerk.com read-only REST API}
+  spec.description   = %q{Gem to wrap MoonClerk.com read-only REST API}
+  spec.license       = "MIT"
   spec.homepage      = "https://github.com/TrevorHinesley/moonclerk"
 
   spec.files         = `git ls-files`.split("\n")
-  spec.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   spec.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  spec.bindir        = "exe"
+  spec.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.9"
