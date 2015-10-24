@@ -31,7 +31,7 @@ Set your API key in an initializer (e.g. `config/initializers/moonclerk.rb`):
 All objects have `find` and `list`, and some have `where` which allows filtering on certain attributes. For any `list` or `where` call, `next_page` and `previous_page` can be used to traverse the results returned from the API:
 
 ```ruby
-Moonclerk.list.next_page
+Moonclerk::Customer.list.next_page
 ```
 
 ### Customers (known as "Plans" in the MoonClerk UI)
