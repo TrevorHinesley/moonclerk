@@ -21,7 +21,7 @@ module Moonclerk
       alias :all :list
 
       def where(options = {})
-        Util.symbolize_names(options)
+        options = Util.symbolize_names(options)
         params = {}
         (@permitted_attributes + default_param_keys).each do |key|
           if options[key]

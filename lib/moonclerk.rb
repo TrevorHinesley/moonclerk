@@ -78,7 +78,7 @@ module Moonclerk
       error_obj = JSON.parse(response.body)
       error_obj = Util.symbolize_names(error_obj)
       error = error_obj[:error]
-      raise StripeError.new unless error && error.is_a?(Hash)
+      raise MoonclerkError.new unless error && error.is_a?(Hash)
 
     rescue JSON::ParserError, StripeError
       raise general_api_error(response.status, response.body)
