@@ -26,12 +26,21 @@ require "moonclerk/errors/invalid_request_error"
 module Moonclerk
   API_BASE = "https://api.moonclerk.com"
   API_VERSION = 1
+  DEFAULT_CA_BUNDLE_PATH = File.join(File.dirname(__FILE__), '/data/ca_certificates.crt')
+
+  @verify_ssl_certs = true
 
   class << self
-    attr_accessor :api_key
+    attr_accessor :api_key, :verify_ssl_certs, :env
   end
 
   def self.request(method, url, params = {})
+    unless env
+      env = Rails.env
+    end
+
+    env = env.to_sym unless env.is_a?(Symbol)
+
     unless api_key
       raise AuthenticationError.new('No API key provided. ' \
         'Set your API key using "Moonclerk.api_key = <API-KEY>". ' \
@@ -45,7 +54,27 @@ module Moonclerk
         'MoonClerk web interface by logging in at moonclerk.com.)')
     end
 
-    connection = Faraday.new
+    if verify_ssl_certs
+      ssl_options = {
+        ssl: {
+          ca_file: Moonclerk::DEFAULT_CA_BUNDLE_PATH
+        }
+      }
+    else
+      ssl_options = { 
+        ssl: { 
+          verify: false
+        }
+      }
+      unless @verify_ssl_warned
+        @verify_ssl_warned = true
+        $stderr.puts("WARNING: Running without SSL cert verification. " \
+          "You should never do this in production. " \
+          "Execute 'Moonclerk.verify_ssl_certs = true' to enable verification.")
+      end
+    end
+
+    connection = Faraday.new(ssl_options)
     response = connection.send(method, url, params, headers)
     parsed_response = JSON.parse(response.body)
     symbolized_response = Util.symbolize_names(parsed_response)
