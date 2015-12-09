@@ -76,6 +76,7 @@ module Moonclerk
 
     connection = Faraday.new(ssl_options)
     response = connection.send(method, url, params, headers)
+    handle_api_error(response) if !(200..299).include?(response.status)
     parsed_response = JSON.parse(response.body)
     symbolized_response = Util.symbolize_names(parsed_response)
 
