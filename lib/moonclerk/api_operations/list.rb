@@ -4,7 +4,7 @@ module Moonclerk
       def list(params = {})
         response = request(:get, url, params)
 
-        klass = self.is_a?(Moonclerk::ListObject) ? self[:object] : self.class_name.downcase
+        klass = self.is_a?(Moonclerk::ListObject) ? self[:object] : self.class_name.underscore.downcase
         obj = ListObject.construct_from({ data: response, object: klass })
         
         # Set a count and offset so that we can fetch the same number when accessing the

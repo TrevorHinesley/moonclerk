@@ -10,7 +10,7 @@ module Moonclerk
       if self == APIResource
         raise NotImplementedError.new('APIResource is an abstract class.  You should perform actions on its subclasses (Customer, Payment, etc.)')
       end
-      "#{API_BASE}/#{CGI.escape(class_name.downcase)}s"
+      "#{API_BASE}/#{CGI.escape(class_name.pluralize.downcase)}"
     end
 
     def url
